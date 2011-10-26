@@ -14,11 +14,12 @@
 # A handy place to put stuff that git should ignore:
 /ignore/
 support/async/
-support/dryice/
-support/jsdom/
 support/node-htmlparser/
 support/node-o3-xml/
 support/requirejs/node_modules
 node_modules
 support/requirejs/
+
 /node_modules
+support/node-o3-xml-v4/
+.git-ref

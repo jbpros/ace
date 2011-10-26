@@ -187,8 +187,8 @@ function setupContainer(element, getValue) {
             var oldSumit = parentNode.onsubmit;
             // Override the onsubmit function of the form.
             parentNode.onsubmit = function(evt) {
-                element.value = getValue();
                 element.innerHTML = getValue();
+                element.value = getValue();
                 // If there is a onsubmit function already, then call
                 // it with the current context and pass the event.
                 if (oldSumit) {
@@ -250,7 +250,7 @@ window.__ace_shadowed__.transformTextarea = function(element) {
         overflow: "auto",
         fontSize: "14px"
     };
-    if (!UA.isIE) {
+    if (!UA.isOldIE) {
         settingDivStyles.backgroundColor = "rgba(0, 0, 0, 0.6)";
     } else {
         settingDivStyles.backgroundColor = "#333";
@@ -382,7 +382,7 @@ function setupApi(editor, editorDiv, settingDiv, ace, options) {
         }
     }
 
-    for (option in ace.options) {
+    for (var option in ace.options) {
         ret.setOption(option, ace.options[option]);
     }
 
@@ -410,33 +410,45 @@ function setupSettingPanel(settingDiv, settingOpener, api, options) {
         mode: {
             text:       "Plain",
             javascript: "JavaScript",
-            coffee:     "CoffeeScript",
+            xml:        "XML",
             html:       "HTML",
             css:        "CSS",
-            xml:        "XML",
-            svg:        "SVG",
-            c_cpp:      "C++",
-            csharp:     "C#",
-            java:       "Java",
-            php:        "PHP",
-            ruby:       "Ruby",
-            perl:       "Perl",
+            scss:       "SCSS",
             python:     "Python",
-            clojure:    "Clojure"
+            php:        "PHP",
+            java:       "Java",
+            ruby:       "Ruby",
+            c_cpp:      "C/C++",
+            coffee:     "CoffeeScript",
+            json:       "json",
+            perl:       "Perl",
+            clojure:    "Clojure",
+            ocaml:      "OCaml",
+            csharp:     "C#",
+            svg:        "SVG",
+            textile:    "Textile",
+            groovy:     "Groovy",
+            Scala:      "Scala"
         },
         theme: {
-            textmate:         "Textmate",
-            eclipse:          "Eclipse",
             clouds:           "Clouds",
             clouds_midnight:  "Clouds Midnight",
             cobalt:           "Cobalt",
+            crimson_editor:   "Crimson Editor",
             dawn:             "Dawn",
+            eclipse:          "Eclipse",
             idle_fingers:     "Idle Fingers",
             kr_theme:         "Kr Theme",
+            merbivore:        "Merbivore",
+            merbivore_soft:   "Merbivore Soft",
             mono_industrial:  "Mono Industrial",
             monokai:          "Monokai",
             pastel_on_dark:   "Pastel On Dark",
-            twilight:         "Twilight"
+            solarized_dark:   "Solarized Dark",
+            solarized_light:  "Solarized Light",
+            textmate:         "Textmate",
+            twilight:         "Twilight",
+            vibrant_ink:      "Vibrant Ink"
         },
         gutter: BOOL,
         fontSize: {
@@ -455,7 +467,7 @@ function setupSettingPanel(settingDiv, settingOpener, api, options) {
         showPrintMargin:    BOOL,
         useSoftTabs:        BOOL,
         showInvisibles:     BOOL
-    }
+    };
 
     var table = [];
     table.push("<table><tr><th>Setting</th><th>Value</th></tr>");

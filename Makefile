@@ -1,6 +1,12 @@
 build:
+	git rev-parse HEAD > .git-ref
 	mkdir -p build/src
+	mkdir -p build/demo/kitchen-sink
 	mkdir -p build/textarea/src
+	
+	cp -r demo/kitchen-sink/styles.css build/demo/kitchen-sink/styles.css
+	cp demo/kitchen-sink/logo.png build/demo/kitchen-sink/logo.png
+	
 	./Makefile.dryice.js normal
 	./Makefile.dryice.js bm
 
